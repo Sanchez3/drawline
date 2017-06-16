@@ -34,7 +34,7 @@ LineGp.prototype.drawLine=function(line_data){
 	this.lineArray=line_data;
 	if(this.lineArray.length>0){
 		this.clear();
-		this.lineStyle(1,0xFFFFFF,1);
+		this.lineStyle(1.5,0xFFFFFF,1);
 		this.moveTo(this.lineArray[0].x,this.lineArray[0].y-this.wh/2);
 		for (var i = 1; i < this.lineArray.length; i++) {
 			this.lineTo(this.lineArray[i].x,this.lineArray[i].y-this.wh/2);

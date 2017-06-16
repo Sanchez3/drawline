@@ -83,28 +83,29 @@ var dl={
 
 		var upflag=false;
 		hitGraphics.on('pointerup',function(e){
-
 			upflag=true;
+			// dContainer.rotation=Math.PI/2;
 
 		});
 
 		hitGraphics.on('pointermove',function (e) {
 			// body...
 			if(upflag) return;
-			if(oe!==e.data.originalEvent){
-				oe=e.data.originalEvent;
-				console.log(oe.globalX,oe.globalY);
-				if((oe.globalX<ww&&oe.globalX>0)&&(oe.globalY<(wh/2+ww/2)&&oe.globalY>wh/2)){
+			// if(oe!==e.data.global){
+				oe=e.data.global;
+				// console.log(e.data.global.x);
+				// alert(oe.x);
+				if((oe.x<ww&&oe.x>0)&&(oe.y<(wh/2+ww/2)&&oe.y>wh/2)){
 					if(lines.length>30) {
 						lines.shift();
-						lines.push({x:oe.globalX,y:oe.globalY});
+						lines.push({x:oe.x,y:oe.y});
 
 					}else{
-						lines.push({x:oe.globalX,y:oe.globalY});
+						lines.push({x:oe.x,y:oe.y});
 					}
 				}
 				
-			}
+			// }
 
 		});
 
