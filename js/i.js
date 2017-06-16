@@ -52,17 +52,20 @@ var dl={
 		var flag=false;
 		var oe;
 
-		var filter=new PIXI.filters.ColorMatrixFilter();
-
 		var centerGp=new PIXI.Graphics();
+		centerGp.lineStyle(8, 0xffffff, 1.0)
+		centerGp.beginFill(0x000001, 1);
+		centerGp.drawRect(ww/2-3, wh/2-3 ,200, 200);
 
-		centerGp.beginFill(0xFFFFFF, 1);
-		centerGp.drawRect(ww/2-3, wh/2-3 ,6, 6);
+		centerGp.endFill();
+		//blurFilter bug  pixi
+		var blurFilter = new PIXI.filters.BlurFilter();
+		blurFilter.blur = 20;
+		centerGp.filters=[blurFilter];
 		centerGp.pivot.set(0.5,0.5);
 		// centerGp.rotation=45*Math.PI/180;
-		centerGp.endFill();
-		dContainer.addChild(centerGp);
-		centerGp.filters=[filter];
+		stage.addChild(centerGp);
+
 
 
 		var lGp=new LineGp(ww/2,wh/2-ww/2,{x:1,y:1},90,lines);
@@ -142,10 +145,6 @@ var dl={
 
 			boppGp.drawLine(lines);
 			bGp.drawLine(lines);
-
-			// if(upflag){
-			// 	dContainer.rotation -= 0.05;
-			// }
 
 			renderer.render(stage);
 		}
