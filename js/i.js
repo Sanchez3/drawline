@@ -40,14 +40,19 @@ var dl={
 
 
 		var dContainer=new PIXI.Container();
-		dContainer.x=0;
-		dContainer.y=0;
+		//pivot 是一个具体坐标点
+		dContainer.pivot.x=ww/2;
+		dContainer.pivot.y=wh/2;
+		dContainer.x=ww/2;
+		dContainer.y=wh/2;
 		stage.addChild(dContainer);
 
 
 		var lines=[];
 		var flag=false;
 		var oe;
+
+		var filter=new PIXI.filters.ColorMatrixFilter();
 
 		var centerGp=new PIXI.Graphics();
 
@@ -57,6 +62,7 @@ var dl={
 		// centerGp.rotation=45*Math.PI/180;
 		centerGp.endFill();
 		dContainer.addChild(centerGp);
+		centerGp.filters=[filter];
 
 
 		var lGp=new LineGp(ww/2,wh/2-ww/2,{x:1,y:1},90,lines);
@@ -83,8 +89,20 @@ var dl={
 
 		var upflag=false;
 		hitGraphics.on('pointerup',function(e){
+			if(upflag) return;
 			upflag=true;
-			// dContainer.rotation=Math.PI/2;
+			var t=TweenLite.to(dContainer,2,{rotation:+Math.PI,ease:Linear.easeInOut,onComplete:function(){
+				this.restart();
+			}});
+			// dContainer.width=ww;
+			// dContainer.height=ww;
+			console.log(dContainer.pivot.x,dContainer.pivot.y);
+			// dContainer.x=dContainer.width/2;
+			// dContainer.y=dContainer.height/2;
+			// dContainer.rotation+=90*Math.PI/180;
+
+
+			// dContainer.scale.set(0.2);
 
 		});
 
@@ -124,6 +142,10 @@ var dl={
 
 			boppGp.drawLine(lines);
 			bGp.drawLine(lines);
+
+			// if(upflag){
+			// 	dContainer.rotation -= 0.05;
+			// }
 
 			renderer.render(stage);
 		}
