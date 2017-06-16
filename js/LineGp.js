@@ -8,6 +8,11 @@ function LineGp(_x,_y,_scale,_r,line_data){
 	// this.beginFill(0x00EEFF, 1);
 	// this.drawRect(0, 0, window.innerWidth, window.innerHeight/2);
 	// this.endFill();
+	this.block=new PIXI.Graphics();
+	this.block.scale=this.scale;
+	// this.block.rotation=45*Math.PI/180;
+	// this.block.pivot.set(0.5,0.5);
+	this.addChild(this.block);
 	
 	this.lineArray=line_data;
 	this.wh=window.innerHeight;
@@ -16,6 +21,15 @@ function LineGp(_x,_y,_scale,_r,line_data){
 
 LineGp.prototype = Object.create(PIXI.Graphics.prototype);
 LineGp.prototype.constructor=LineGp;
+LineGp.prototype.drawBlock=function(xf,yf){
+	this.block.clear();
+	this.block.x=xf-3*this.block.scale.x;
+	this.block.y=yf-3*this.block.scale.y;
+	this.block.beginFill(0xFFFFFF, 1);
+	this.block.drawRect(0, 0, 6,6);
+	this.block.endFill();
+
+};
 LineGp.prototype.drawLine=function(line_data){
 	this.lineArray=line_data;
 	if(this.lineArray.length>0){
@@ -25,6 +39,7 @@ LineGp.prototype.drawLine=function(line_data){
 		for (var i = 1; i < this.lineArray.length; i++) {
 			this.lineTo(this.lineArray[i].x,this.lineArray[i].y-this.wh/2);
 		}
+		this.drawBlock(this.lineArray[this.lineArray.length-1].x,this.lineArray[this.lineArray.length-1].y-this.wh/2);
 
 	}
 };
