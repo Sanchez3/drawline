@@ -26,7 +26,7 @@ var dl={
 		var stage=new PIXI.Container();
 		stage.x=0;
 		stage.y=0;
-		
+
 
 
 		var hitGraphics= new PIXI.Graphics();
@@ -38,32 +38,47 @@ var dl={
 		// hitGraphics.hitArea=new PIXI.Rectangle(0, wh/2, ww, wh/2)
 		stage.addChild(hitGraphics);
 
+
+		var dContainer=new PIXI.Container();
+		dContainer.x=0;
+		dContainer.y=0;
+		stage.addChild(dContainer);
+
+
 		var lines=[];
 		var flag=false;
 		var oe;
 
+		var centerGp=new PIXI.Graphics();
+
+		centerGp.beginFill(0xFFFFFF, 1);
+		centerGp.drawRect(ww/2-3, wh/2-3 ,6, 6);
+		centerGp.pivot.set(0.5,0.5);
+		// centerGp.rotation=45*Math.PI/180;
+		centerGp.endFill();
+		dContainer.addChild(centerGp);
+
 
 		var lGp=new LineGp(ww/2,wh/2-ww/2,{x:1,y:1},90,lines);
-		stage.addChild(lGp);
+		dContainer.addChild(lGp);
 		var loppGp=new LineGp(ww/2,wh/2+ww/2,{x:-1,y:1},90,lines);
-		stage.addChild(loppGp);
-		
+		dContainer.addChild(loppGp);
 		var rGp=new LineGp(ww/2,wh/2-ww/2,{x:1,y:-1},90,lines);
-		stage.addChild(rGp);
+		dContainer.addChild(rGp);
 		var roppGp=new LineGp(ww/2,wh/2+ww/2,{x:-1,y:-1},90,lines);
-		stage.addChild(roppGp);
+		dContainer.addChild(roppGp);
 
 
 		var tGp=new LineGp(0,wh/2,{x:1,y:-1},0,lines);
-		stage.addChild(tGp);
+		dContainer.addChild(tGp);
 		var toppGp=new LineGp(ww,wh/2,{x:-1,y:-1},0,lines);
-		stage.addChild(toppGp);
+		dContainer.addChild(toppGp);
 
 
 		var bGp=new LineGp(0,wh/2,{x:1,y:1},0,lines);
-		stage.addChild(bGp);
+		dContainer.addChild(bGp);
 		var boppGp=new LineGp(ww,wh/2,{x:-1,y:1},0,lines);
-		stage.addChild(boppGp);
+		dContainer.addChild(boppGp);
 
 
 		var upflag=false;
