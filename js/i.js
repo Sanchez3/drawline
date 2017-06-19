@@ -16,7 +16,7 @@ var dl={
 		var that=this;
 		var wh=window.innerHeight;
 		var ww=window.innerWidth;
-		renderer=new PIXI.autoDetectRenderer({width:ww,height:wh,transparent:false,forceCanvas:true});
+		renderer=new PIXI.autoDetectRenderer({width:ww,height:wh,transparent:false});
 		document.getElementById('mcanvas').appendChild(renderer.view);
 
 
@@ -53,18 +53,14 @@ var dl={
 		var oe;
 
 		var centerGp=new PIXI.Graphics();
-		centerGp.lineStyle(8, 0xffffff, 1.0)
-		centerGp.beginFill(0x000001, 1);
-		centerGp.drawRect(ww/2-3, wh/2-3 ,200, 200);
 
+		centerGp.beginFill(0xffffff, 1);
+		centerGp.drawRect(ww/2-3, wh/2-3 ,6, 6);
 		centerGp.endFill();
-		//blurFilter bug  pixi
-		var blurFilter = new PIXI.filters.BlurFilter();
-		blurFilter.blur = 20;
-		centerGp.filters=[blurFilter];
 		centerGp.pivot.set(0.5,0.5);
+		
 		// centerGp.rotation=45*Math.PI/180;
-		stage.addChild(centerGp);
+		dContainer.addChild(centerGp);
 
 
 
@@ -88,6 +84,12 @@ var dl={
 		dContainer.addChild(bGp);
 		var boppGp=new LineGp(ww,wh/2,{x:-1,y:1},0,lines);
 		dContainer.addChild(boppGp);
+
+		//blurFilter pixi  only in webgl
+		// var blurFilter = new PIXI.filters.BlurFilter();
+		// blurFilter.blur = 1;
+		// dContainer.filters=[blurFilter];
+		// console.log(dContainer.filters);
 
 
 		var upflag=false;
