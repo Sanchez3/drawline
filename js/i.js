@@ -10,13 +10,23 @@ var dl={
 	},
 	eventInit:function (argument) {
 		// body...
+		 var that = this;
+            document.addEventListener('touchstart', function (e) {
+            }, false);
+            document.addEventListener('touchmove', function (e) {
+                e.preventDefault();
+            }, false);
+            //禁止弹出选择菜单
+            document.documentElement.style.webkitTouchCallout = "none";
+            return that;
 	},
 	app:null,
 	canvasInit:function(argument){
 		var that=this;
 		var wh=window.innerHeight;
 		var ww=window.innerWidth;
-		renderer=new PIXI.autoDetectRenderer({width:ww,height:wh,transparent:false});
+		//antialias抗齿锯, forceCanvas
+		renderer=new PIXI.autoDetectRenderer({width:ww,height:wh,transparent:false,antialias:true});
 		document.getElementById('mcanvas').appendChild(renderer.view);
 
 
@@ -26,17 +36,18 @@ var dl={
 		var stage=new PIXI.Container();
 		stage.x=0;
 		stage.y=0;
+		stage.interactive=true;
 
 
 
-		var hitGraphics= new PIXI.Graphics();
-		hitGraphics.y=wh/2;
-		hitGraphics.beginFill(0x0000FF, 1);
-		hitGraphics.drawRect(0, 0, ww, ww/2);
-		hitGraphics.endFill();
-		hitGraphics.interactive=true;
-		// hitGraphics.hitArea=new PIXI.Rectangle(0, wh/2, ww, wh/2)
-		stage.addChild(hitGraphics);
+		// var hitGraphics= new PIXI.Graphics();
+		// hitGraphics.y=wh/2;
+		// // hitGraphics.beginFill(0x0000FF, 1);
+		// // hitGraphics.drawRect(0, 0, ww, ww/2);
+		// // hitGraphics.endFill();
+		// hitGraphics.interactive=true;
+		// // hitGraphics.hitArea=new PIXI.Rectangle(0, wh/2, ww, wh/2)
+		// stage.addChild(hitGraphics);
 
 
 		var dContainer=new PIXI.Container();
@@ -53,13 +64,13 @@ var dl={
 		var oe;
 
 		var centerGp=new PIXI.Graphics();
-
-		centerGp.beginFill(0xffffff, 1);
-		centerGp.drawRect(ww/2-3, wh/2-3 ,6, 6);
-		centerGp.endFill();
-		centerGp.pivot.set(0.5,0.5);
 		
+		centerGp.beginFill(0xffffff, 1);
+		centerGp.drawRect(ww/2-3, wh/2-3,6, 6);
+		centerGp.endFill();
 		// centerGp.rotation=45*Math.PI/180;
+		centerGp.pivot.x=0;
+		centerGp.pivot.y=0;
 		dContainer.addChild(centerGp);
 
 
@@ -68,17 +79,16 @@ var dl={
 		dContainer.addChild(lGp);
 		var loppGp=new LineGp(ww/2,wh/2+ww/2,{x:-1,y:1},90,lines);
 		dContainer.addChild(loppGp);
+
 		var rGp=new LineGp(ww/2,wh/2-ww/2,{x:1,y:-1},90,lines);
 		dContainer.addChild(rGp);
 		var roppGp=new LineGp(ww/2,wh/2+ww/2,{x:-1,y:-1},90,lines);
 		dContainer.addChild(roppGp);
 
-
 		var tGp=new LineGp(0,wh/2,{x:1,y:-1},0,lines);
 		dContainer.addChild(tGp);
 		var toppGp=new LineGp(ww,wh/2,{x:-1,y:-1},0,lines);
 		dContainer.addChild(toppGp);
-
 
 		var bGp=new LineGp(0,wh/2,{x:1,y:1},0,lines);
 		dContainer.addChild(bGp);
@@ -93,7 +103,7 @@ var dl={
 
 
 		var upflag=false;
-		hitGraphics.on('pointerup',function(e){
+		stage.on('pointerup',function(e){
 			if(upflag) return;
 			upflag=true;
 			var t=TweenLite.to(dContainer,2,{rotation:+Math.PI,ease:Linear.easeInOut,onComplete:function(){
@@ -101,7 +111,7 @@ var dl={
 			}});
 			// dContainer.width=ww;
 			// dContainer.height=ww;
-			console.log(dContainer.pivot.x,dContainer.pivot.y);
+			// console.log(dContainer.pivot.x,dContainer.pivot.y);
 			// dContainer.x=dContainer.width/2;
 			// dContainer.y=dContainer.height/2;
 			// dContainer.rotation+=90*Math.PI/180;
@@ -111,7 +121,7 @@ var dl={
 
 		});
 
-		hitGraphics.on('pointermove',function (e) {
+		stage.on('pointermove',function (e) {
 			// body...
 			if(upflag) return;
 			// if(oe!==e.data.global){
@@ -154,5 +164,5 @@ var dl={
 		
 	}
 };
-dl.canvasInit();
+dl.eventInit().canvasInit();
 
