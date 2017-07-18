@@ -1,17 +1,19 @@
 function LineGp(_x,_y,_scale,_r,line_data){
 	PIXI.Graphics.call(this);
 	this.scale.set(_scale.x,_scale.y);
+	
+	// this.pivot.x=window.innerWidth/2;
+	// this.pivot.y=window.innerHeight/2;
+
 	this.rotation=_r*Math.PI/180;
 	this.x=_x;
 	this.y=_y;
 
-	// this.beginFill(0x00EEFF, 1);
-	// this.drawRect(0, 0, window.innerWidth, window.innerHeight/2);
-	// this.endFill();
+	
 	this.block=new PIXI.Graphics();
 	this.block.scale=this.scale;
-	// this.block.rotation=45*Math.PI/180;
-	// this.block.pivot.set(0.5,0.5);
+
+
 	this.addChild(this.block);
 	
 	this.lineArray=line_data;
@@ -29,6 +31,11 @@ LineGp.prototype.drawBlock=function(xf,yf){
 	this.block.drawRect(0, 0, 6,6);
 	this.block.endFill();
 
+};
+LineGp.prototype.drawArea=function(){
+	this.beginFill(0x00EEFF, 1);
+	this.drawRect(0, 0, window.innerWidth, window.innerHeight/2-window.innerWidth/2);
+	this.endFill();
 };
 LineGp.prototype.drawLine=function(line_data){
 	this.lineArray=line_data;

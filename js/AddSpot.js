@@ -1,0 +1,3 @@
+function CreateSpot(_num){
+	
+}

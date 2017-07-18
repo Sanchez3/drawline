@@ -73,8 +73,12 @@ var dl={
 		centerGp.pivot.y=0;
 		dContainer.addChild(centerGp);
 
+		var spot_num=5;
+		var spot_r=360/spot_num;
 
-
+		// var s1Gp_opp=new LineGp(ww,wh/2,{x:-1,y:1},0,lines);
+		// dContainer.addChild(boppGp);
+		
 		var lGp=new LineGp(ww/2,wh/2-ww/2,{x:1,y:1},90,lines);
 		dContainer.addChild(lGp);
 		var loppGp=new LineGp(ww/2,wh/2+ww/2,{x:-1,y:1},90,lines);
@@ -106,7 +110,7 @@ var dl={
 		stage.on('pointerup',function(e){
 			if(upflag) return;
 			upflag=true;
-			var t=TweenLite.to(dContainer,2,{rotation:+Math.PI,ease:Linear.easeInOut,onComplete:function(){
+			var t=TweenLite.to(dContainer,4,{rotation:2*Math.PI,ease:Linear.easeInOut,onComplete:function(){
 				this.restart();
 			}});
 			// dContainer.width=ww;
