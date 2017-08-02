@@ -1,9 +1,6 @@
 function LineGp(_x,_y,_scale,_r,line_data){
 	PIXI.Graphics.call(this);
 	this.scale.set(_scale.x,_scale.y);
-	
-	// this.pivot.x=window.innerWidth/2;
-	// this.pivot.y=window.innerHeight/2;
 
 	this.rotation=_r*Math.PI/180;
 	this.x=_x;
