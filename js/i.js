@@ -107,17 +107,17 @@ var dl = {
             // body...
             if (upflag) return;
             oe = e.data.global;
-            if (oe.x >= ww) {
-                oe.x = ww;
+            if (oe.x >= ww - 5) {
+                oe.x = ww - 5;
             }
-            if (oe.x <= 0) {
-                oe.x = 0;
+            if (oe.x <= 5) {
+                oe.x = 5;
             }
-            if (oe.y >= (wh / 2 + ww / 2)) {
-                oe.y = wh / 2 + ww / 2;
+            if (oe.y >= (wh / 2 + ww / 2 - 5)) {
+                oe.y = wh / 2 + ww / 2 - 5;
             }
-            if (oe.y <= wh / 2) {
-                oe.y = wh / 2;
+            if (oe.y <= wh / 2 + 5) {
+                oe.y = wh / 2 + 5;
             }
             if (lines.length > 30) {
                 lines.shift();
