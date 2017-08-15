@@ -1,6 +1,6 @@
 # 模仿纪念碑谷2画花瓣（画线）
 
-[Codepen](https://codepen.io/sanchez3/pen/dzZbwP)
+[Codepen](https://codepen.io/sanchez3/full/dzZbwP/)
 
 eg.[纪念碑谷2的结束花](https://tieba.baidu.com/p/5149539570)
 
