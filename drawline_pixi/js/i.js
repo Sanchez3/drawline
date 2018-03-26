@@ -24,7 +24,7 @@ var dl = {
         var wh = window.innerHeight;
         var ww = window.innerWidth;
         //antialias抗齿锯, forceCanvas
-        renderer = new PIXI.autoDetectRenderer({ width: ww, height: wh, transparent: false, antialias: true });
+        renderer = new PIXI.autoDetectRenderer({ width: ww, height: wh, transparent: false, antialias: true, resolution: 2 });
         document.getElementById('mcanvas').appendChild(renderer.view);
         renderer.autoResize = true;
         renderer.resize(window.innerWidth, window.innerHeight);
