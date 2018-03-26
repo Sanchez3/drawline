@@ -71,13 +71,6 @@ LineGp.prototype.drawArea = function() {
     this.line.drawRect(0, 0, this.ww, this.ww / 2);
     this.line.endFill();
 };
-LineGp.prototype.drawGlass = function(lines) {
-    this.getPoints(lines);
-
-    this.bmd.draw(this.glass, lines[0].x, lines[0].y, null, null, 'destination-out');
-
-
-};
 
 LineGp.prototype.drawLine = function(lines) {
     this.getPoints(lines);
