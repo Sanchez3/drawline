@@ -130,9 +130,6 @@ var wh = window.innerHeight;
 var ww = window.innerWidth;
 var game = new Phaser.Game('100', '100', Phaser.WEBGL, 'mycanvas', {  create: create, update: update }, true);
 
-function preload() {
-    game.load.image('glass', '../assets/img/glass.png');
-}
 
 function create() {
     game.input.maxPointers = 1;
