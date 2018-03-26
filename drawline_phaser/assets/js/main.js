@@ -121,7 +121,7 @@ var oe = {};
 var lines = [];
 var wh = window.innerHeight;
 var ww = window.innerWidth;
-var game = new Phaser.Game('100', '100', Phaser.WEBGL, 'mycanvas', {  create: create, update: update }, true);
+var game = new Phaser.Game('100', '100', Phaser.CANVAS, 'mycanvas', {  create: create, update: update }, true);
 
 
 function create() {
