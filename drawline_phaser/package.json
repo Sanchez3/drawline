@@ -1,0 +1,45 @@
+{
+    "name": "drawline_phaser",
+    "version": "1.0.0",
+    "description": " ",
+    "license": "MIT",
+    "keywords": [],
+    "repository": "",
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-preset-env": "^1.6.0",
+        "browserify": "^14.4.0",
+        "del": "^3.0.0",
+        "gulp": "^3.9.1",
+        "gulp-babel": "^7.0.0",
+        "gulp-buffer": "0.0.2",
+        "gulp-clean-css": "^3.9.0",
+        "gulp-concat": "^2.6.1",
+        "gulp-connect": "^5.0.0",
+        "gulp-download": "0.0.1",
+        "gulp-htmlmin": "^3.0.0",
+        "gulp-if": "^2.0.2",
+        "gulp-jshint": "^2.0.4",
+        "gulp-processhtml": "^1.1.0",
+        "gulp-rename": "^1.2.2",
+        "gulp-rev": "^8.0.0",
+        "gulp-rev-collector": "^1.2.2",
+        "gulp-streamify": "^1.0.2",
+        "gulp-uglify": "^3.0.0",
+        "gulp-watch": "^4.3.11",
+        "jshint": "^2.9.5",
+        "pump": "^1.0.2",
+        "tiny-lr": "^1.0.5",
+        "vinyl-paths": "^2.1.0",
+        "vinyl-source-stream": "^1.1.0",
+        "watchify": "^3.9.0"
+    },
+    "dependencies": {
+        "gsap": "^1.20.3",
+        "phaser": "^2.6.2"
+    },
+    "scripts": {
+        "start": "node ./node_modules/gulp/bin/gulp.js",
+        "build": "node ./node_modules/gulp/bin/gulp.js build"
+    }
+}
