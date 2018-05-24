@@ -21,6 +21,7 @@ function CreatePoint(game, _x, _y, n) {
 CreatePoint.prototype.update = function(lines) {
     for (var i = this.lGp.length - 1; i >= 0; i--) {
         this.lGp[i].drawLine(lines);
+        // this.lGp[i].drawGradientLine(lines)
     }
 };
 module.exports = CreatePoint;

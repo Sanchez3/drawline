@@ -30,8 +30,7 @@ paths = {
         js: [
             'node_modules/phaser/build/phaser.min.js',
         ],
-        css: [
-        ]
+        css: []
     },
     js: ['src/assets/js/*.js', 'src/assets/js/**/*.js'],
     entry: './src/assets/js/main.js',
@@ -170,6 +169,7 @@ gulp.task('html', ['build'], function(cb) {
 gulp.task('connect', function() {
     connect.server({
         root: ['./dist'],
+        host: '0.0.0.0',
         port: 9000,
         livereload: true
     });
