@@ -1,0 +1,8 @@
+{
+  "generator-phaser-h5": {
+    "projectName": "drawline_threejs",
+    "projectDesc": "",
+    "projectLicense": "MIT",
+    "projectSass": false
+  }
+}
