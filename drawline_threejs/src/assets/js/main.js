@@ -48,7 +48,7 @@ function init() {
     geometry.setDrawRange(0, drawCount);
 
     // material
-    var material = new THREE.LineBasicMaterial({ color: 0xff0000, linewidth: 2 });
+    var material = new THREE.LineBasicMaterial({ color: 0xffffff, linewidth: 2 });
 
     // line
     line = new THREE.Line(geometry, material);
@@ -93,7 +93,13 @@ function onMouseMove(evt) {
         var vNow = new THREE.Vector3(x, y, 0);
 
         vNow.unproject(camera);
-        splineArray.push(vNow);
+        if (splineArray.length > 30) {
+            splineArray.shift();
+            splineArray.push(vNow);
+
+        } else {
+            splineArray.push(vNow);
+        }
 
     }
 }
