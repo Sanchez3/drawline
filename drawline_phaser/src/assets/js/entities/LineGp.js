@@ -34,12 +34,12 @@ LineGp.prototype = Object.create(Phaser.Sprite.prototype);
 LineGp.prototype.constructor = LineGp;
 
 
-LineGp.prototype.drawArea = function() {
+LineGp.prototype.drawArea = function () {
     this.line.beginFill(this.game.rnd.integerInRange(0x000000, 0xFFFFFF), 1);
     this.line.drawRect(0, 0, this.ww, this.ww / 2);
     this.line.endFill();
 };
-LineGp.prototype.drawGradientLine = function(lines) {
+LineGp.prototype.drawGradientLine = function (lines) {
     this.getPoints(lines);
     console.log(this.lineArray.length)
     if (this.lineArray.length > 0) {
@@ -55,7 +55,7 @@ LineGp.prototype.drawGradientLine = function(lines) {
         // ctx.lineTo(31, 12);
         // ctx.lineTo(10, 32);
         ctx.moveTo(this.lineArray[0].x, this.lineArray[0].y - this.wh / 2);
-           // ctx.lineTo(31, 12);
+        // ctx.lineTo(31, 12);
         // ctx.lineTo(10, 32);
         for (var i = 0; i < this.lineArray.length; i++) {
             ctx.lineTo(this.lineArray[i].x, this.lineArray[i].y);
@@ -71,28 +71,35 @@ LineGp.prototype.drawGradientLine = function(lines) {
 
 };
 
-LineGp.prototype.drawLine = function(lines) {
+LineGp.prototype.drawLine = function (lines) {
     this.getPoints(lines);
+
+    // var rc = this.game.rnd.integerInRange(0x000000, 0xFFFFFF)
     if (this.lineArray.length > 0) {
+        var c = window.l.hex
+        this.line.alpha=0.5;
         this.line.clear();
-        this.line.lineStyle(1.5, 0xFFFFFF, 1);
+
+        this.line.lineStyle(1.5, c, 1);
+     
         this.line.moveTo(this.lineArray[0].x, this.lineArray[0].y - this.wh / 2);
         for (var i = 0; i < this.lineArray.length; i++) {
             this.line.lineTo(this.lineArray[i].x, this.lineArray[i].y - this.wh / 2);
         }
-        this.line.beginFill(0xFFFFFF, 1);
+        this.line.beginFill(c, 1);
         this.line.drawRect(this.lineArray[this.lineArray.length - 1].x - 3, this.lineArray[this.lineArray.length - 1].y - 3 - this.wh / 2, 6, 6);
         this.line.endFill();
         this.line.moveTo(this.lineArraySym[0].x, this.lineArraySym[0].y - this.wh / 2);
         for (var j = 0; j < this.lineArraySym.length; j++) {
             this.line.lineTo(this.lineArraySym[j].x, this.lineArraySym[j].y - this.wh / 2);
         }
-        this.line.beginFill(0xFFFFFF, 1);
+        this.line.beginFill(c, 1);
         this.line.drawRect(this.lineArraySym[this.lineArraySym.length - 1].x - 3, this.lineArraySym[this.lineArraySym.length - 1].y - 3 - this.wh / 2, 6, 6);
         this.line.endFill();
+
     }
 };
-LineGp.prototype.getPoints = function(lines) {
+LineGp.prototype.getPoints = function (lines) {
     var x0, y0;
     var a = this.l.a,
         b = this.l.b,
