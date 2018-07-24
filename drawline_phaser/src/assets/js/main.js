@@ -94,6 +94,9 @@ function create() {
         onUpdate: function () {
             window.l.rbg = hsltorgb(window.l.h, 90, 50);
             window.l.hex = rgbToHex(window.l.rbg[0], window.l.rbg[1], window.l.rbg[2])
+            centerGp.beginFill( window.l.hex, 1);
+            centerGp.drawRect(game.width / 2 - 3, game.height / 2 - 3, 6, 6);
+            centerGp.endFill();
         }
     })
 
