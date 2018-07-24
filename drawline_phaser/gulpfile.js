@@ -29,6 +29,7 @@ paths = {
     libs: {
         js: [
             'node_modules/phaser/build/phaser.min.js',
+            'node_modules/gsap/src/minified/TweenMax.min.js'
         ],
         css: []
     },
