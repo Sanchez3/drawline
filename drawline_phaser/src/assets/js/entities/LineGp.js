@@ -39,37 +39,6 @@ LineGp.prototype.drawArea = function () {
     this.line.drawRect(0, 0, this.ww, this.ww / 2);
     this.line.endFill();
 };
-LineGp.prototype.drawGradientLine = function (lines) {
-    this.getPoints(lines);
-    console.log(this.lineArray.length)
-    if (this.lineArray.length > 0) {
-
-        var grd = this.bmd.context.createLinearGradient(0, 0, 170, 0);
-        grd.addColorStop('0', 'magenta');
-        grd.addColorStop('0.5', 'blue');
-        grd.addColorStop('1.0', 'red');
-        var ctx = this.bmd.ctx;
-        // ctx.clearRect(0, 0, this.ww, this.wh)
-        ctx.beginPath();
-        // ctx.moveTo(this.game.width / 2, this.game.height / 2);
-        // ctx.lineTo(31, 12);
-        // ctx.lineTo(10, 32);
-        ctx.moveTo(this.lineArray[0].x, this.lineArray[0].y - this.wh / 2);
-        // ctx.lineTo(31, 12);
-        // ctx.lineTo(10, 32);
-        for (var i = 0; i < this.lineArray.length; i++) {
-            ctx.lineTo(this.lineArray[i].x, this.lineArray[i].y);
-        }
-        ctx.strokeStyle = grd;
-        ctx.stroke();
-        ctx.closePath();
-        this.bmd.addToWorld();
-        // var sprite = this.game.add.sprite(0, 0, this.bmd); 
-    }
-
-
-
-};
 
 LineGp.prototype.drawLine = function (lines) {
     this.getPoints(lines);
