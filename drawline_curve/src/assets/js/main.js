@@ -1,5 +1,8 @@
 'use strict';
+import '../css/css.css';
 
+import TweenMax from 'gsap'
+import Stats from 'stats.js'
 var CreatePoint = require('./entities/CreatePoint');
 var cp;
 var pressed = false;
